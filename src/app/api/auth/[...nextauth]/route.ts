@@ -6,6 +6,7 @@ import { PrismaClient } from "@/generated/prisma";
 declare module "next-auth" {
   interface Session {
     user: {
+      email: string;
       accessToken?: string;
     };
   }
