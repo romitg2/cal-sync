@@ -1002,21 +1002,18 @@ export namespace Prisma {
 
   export type CalendarMinAggregateOutputType = {
     id: string | null
-    calendarId: string | null
     token: string | null
     userId: string | null
   }
 
   export type CalendarMaxAggregateOutputType = {
     id: string | null
-    calendarId: string | null
     token: string | null
     userId: string | null
   }
 
   export type CalendarCountAggregateOutputType = {
     id: number
-    calendarId: number
     token: number
     userId: number
     _all: number
@@ -1025,21 +1022,18 @@ export namespace Prisma {
 
   export type CalendarMinAggregateInputType = {
     id?: true
-    calendarId?: true
     token?: true
     userId?: true
   }
 
   export type CalendarMaxAggregateInputType = {
     id?: true
-    calendarId?: true
     token?: true
     userId?: true
   }
 
   export type CalendarCountAggregateInputType = {
     id?: true
-    calendarId?: true
     token?: true
     userId?: true
     _all?: true
@@ -1119,7 +1113,6 @@ export namespace Prisma {
 
   export type CalendarGroupByOutputType = {
     id: string
-    calendarId: string
     token: string
     userId: string
     _count: CalendarCountAggregateOutputType | null
@@ -1143,7 +1136,6 @@ export namespace Prisma {
 
   export type CalendarSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    calendarId?: boolean
     token?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1151,7 +1143,6 @@ export namespace Prisma {
 
   export type CalendarSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    calendarId?: boolean
     token?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1159,7 +1150,6 @@ export namespace Prisma {
 
   export type CalendarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    calendarId?: boolean
     token?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1167,12 +1157,11 @@ export namespace Prisma {
 
   export type CalendarSelectScalar = {
     id?: boolean
-    calendarId?: boolean
     token?: boolean
     userId?: boolean
   }
 
-  export type CalendarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "calendarId" | "token" | "userId", ExtArgs["result"]["calendar"]>
+  export type CalendarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "userId", ExtArgs["result"]["calendar"]>
   export type CalendarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -1190,7 +1179,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      calendarId: string
       token: string
       userId: string
     }, ExtArgs["result"]["calendar"]>
@@ -1618,7 +1606,6 @@ export namespace Prisma {
    */
   interface CalendarFieldRefs {
     readonly id: FieldRef<"Calendar", 'String'>
-    readonly calendarId: FieldRef<"Calendar", 'String'>
     readonly token: FieldRef<"Calendar", 'String'>
     readonly userId: FieldRef<"Calendar", 'String'>
   }
@@ -3121,7 +3108,6 @@ export namespace Prisma {
 
   export const CalendarScalarFieldEnum: {
     id: 'id',
-    calendarId: 'calendarId',
     token: 'token',
     userId: 'userId'
   };
@@ -3197,7 +3183,6 @@ export namespace Prisma {
     OR?: CalendarWhereInput[]
     NOT?: CalendarWhereInput | CalendarWhereInput[]
     id?: StringFilter<"Calendar"> | string
-    calendarId?: StringFilter<"Calendar"> | string
     token?: StringFilter<"Calendar"> | string
     userId?: StringFilter<"Calendar"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3205,7 +3190,6 @@ export namespace Prisma {
 
   export type CalendarOrderByWithRelationInput = {
     id?: SortOrder
-    calendarId?: SortOrder
     token?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -3216,7 +3200,6 @@ export namespace Prisma {
     AND?: CalendarWhereInput | CalendarWhereInput[]
     OR?: CalendarWhereInput[]
     NOT?: CalendarWhereInput | CalendarWhereInput[]
-    calendarId?: StringFilter<"Calendar"> | string
     token?: StringFilter<"Calendar"> | string
     userId?: StringFilter<"Calendar"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3224,7 +3207,6 @@ export namespace Prisma {
 
   export type CalendarOrderByWithAggregationInput = {
     id?: SortOrder
-    calendarId?: SortOrder
     token?: SortOrder
     userId?: SortOrder
     _count?: CalendarCountOrderByAggregateInput
@@ -3237,7 +3219,6 @@ export namespace Prisma {
     OR?: CalendarScalarWhereWithAggregatesInput[]
     NOT?: CalendarScalarWhereWithAggregatesInput | CalendarScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Calendar"> | string
-    calendarId?: StringWithAggregatesFilter<"Calendar"> | string
     token?: StringWithAggregatesFilter<"Calendar"> | string
     userId?: StringWithAggregatesFilter<"Calendar"> | string
   }
@@ -3299,48 +3280,41 @@ export namespace Prisma {
 
   export type CalendarCreateInput = {
     id?: string
-    calendarId: string
     token: string
     user: UserCreateNestedOneWithoutCalendarsInput
   }
 
   export type CalendarUncheckedCreateInput = {
     id?: string
-    calendarId: string
     token: string
     userId: string
   }
 
   export type CalendarUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    calendarId?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutCalendarsNestedInput
   }
 
   export type CalendarUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    calendarId?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CalendarCreateManyInput = {
     id?: string
-    calendarId: string
     token: string
     userId: string
   }
 
   export type CalendarUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    calendarId?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
   }
 
   export type CalendarUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    calendarId?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -3427,21 +3401,18 @@ export namespace Prisma {
 
   export type CalendarCountOrderByAggregateInput = {
     id?: SortOrder
-    calendarId?: SortOrder
     token?: SortOrder
     userId?: SortOrder
   }
 
   export type CalendarMaxOrderByAggregateInput = {
     id?: SortOrder
-    calendarId?: SortOrder
     token?: SortOrder
     userId?: SortOrder
   }
 
   export type CalendarMinOrderByAggregateInput = {
     id?: SortOrder
-    calendarId?: SortOrder
     token?: SortOrder
     userId?: SortOrder
   }
@@ -3650,13 +3621,11 @@ export namespace Prisma {
 
   export type CalendarCreateWithoutUserInput = {
     id?: string
-    calendarId: string
     token: string
   }
 
   export type CalendarUncheckedCreateWithoutUserInput = {
     id?: string
-    calendarId: string
     token: string
   }
 
@@ -3691,32 +3660,27 @@ export namespace Prisma {
     OR?: CalendarScalarWhereInput[]
     NOT?: CalendarScalarWhereInput | CalendarScalarWhereInput[]
     id?: StringFilter<"Calendar"> | string
-    calendarId?: StringFilter<"Calendar"> | string
     token?: StringFilter<"Calendar"> | string
     userId?: StringFilter<"Calendar"> | string
   }
 
   export type CalendarCreateManyUserInput = {
     id?: string
-    calendarId: string
     token: string
   }
 
   export type CalendarUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    calendarId?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
   }
 
   export type CalendarUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    calendarId?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
   }
 
   export type CalendarUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    calendarId?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
   }
 

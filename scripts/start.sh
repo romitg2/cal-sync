@@ -29,9 +29,13 @@ fi
 # Generate DATABASE_URL
 DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:${PORT}/${POSTGRES_DB}"
 
-# Write to Next.js .env.local file
-echo "DATABASE_URL=$DATABASE_URL" > .env
-echo "created database URL: $DATABASE_URL"
+# Write to Next.js .env file
+if ! grep -q "DATABASE_URL=" .env; then
+  echo "DATABASE_URL=$DATABASE_URL" >> .env
+  echo "Added DATABASE_URL to .env"
+else
+  echo "DATABASE_URL already exists in .env"
+fi
 
 # Start Next.js app
 echo "Starting Next.js app..."

@@ -122,7 +122,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.CalendarScalarFieldEnum = {
   id: 'id',
-  calendarId: 'calendarId',
   token: 'token',
   userId: 'userId'
 };
