@@ -1002,18 +1002,21 @@ export namespace Prisma {
 
   export type CalendarMinAggregateOutputType = {
     id: string | null
+    GoogleChannelId: string | null
     token: string | null
     userId: string | null
   }
 
   export type CalendarMaxAggregateOutputType = {
     id: string | null
+    GoogleChannelId: string | null
     token: string | null
     userId: string | null
   }
 
   export type CalendarCountAggregateOutputType = {
     id: number
+    GoogleChannelId: number
     token: number
     userId: number
     _all: number
@@ -1022,18 +1025,21 @@ export namespace Prisma {
 
   export type CalendarMinAggregateInputType = {
     id?: true
+    GoogleChannelId?: true
     token?: true
     userId?: true
   }
 
   export type CalendarMaxAggregateInputType = {
     id?: true
+    GoogleChannelId?: true
     token?: true
     userId?: true
   }
 
   export type CalendarCountAggregateInputType = {
     id?: true
+    GoogleChannelId?: true
     token?: true
     userId?: true
     _all?: true
@@ -1113,6 +1119,7 @@ export namespace Prisma {
 
   export type CalendarGroupByOutputType = {
     id: string
+    GoogleChannelId: string | null
     token: string
     userId: string
     _count: CalendarCountAggregateOutputType | null
@@ -1136,6 +1143,7 @@ export namespace Prisma {
 
   export type CalendarSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    GoogleChannelId?: boolean
     token?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1143,6 +1151,7 @@ export namespace Prisma {
 
   export type CalendarSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    GoogleChannelId?: boolean
     token?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1150,6 +1159,7 @@ export namespace Prisma {
 
   export type CalendarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    GoogleChannelId?: boolean
     token?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1157,11 +1167,12 @@ export namespace Prisma {
 
   export type CalendarSelectScalar = {
     id?: boolean
+    GoogleChannelId?: boolean
     token?: boolean
     userId?: boolean
   }
 
-  export type CalendarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "userId", ExtArgs["result"]["calendar"]>
+  export type CalendarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "GoogleChannelId" | "token" | "userId", ExtArgs["result"]["calendar"]>
   export type CalendarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -1179,6 +1190,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      GoogleChannelId: string | null
       token: string
       userId: string
     }, ExtArgs["result"]["calendar"]>
@@ -1606,6 +1618,7 @@ export namespace Prisma {
    */
   interface CalendarFieldRefs {
     readonly id: FieldRef<"Calendar", 'String'>
+    readonly GoogleChannelId: FieldRef<"Calendar", 'String'>
     readonly token: FieldRef<"Calendar", 'String'>
     readonly userId: FieldRef<"Calendar", 'String'>
   }
@@ -3108,6 +3121,7 @@ export namespace Prisma {
 
   export const CalendarScalarFieldEnum: {
     id: 'id',
+    GoogleChannelId: 'GoogleChannelId',
     token: 'token',
     userId: 'userId'
   };
@@ -3140,6 +3154,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -3183,6 +3205,7 @@ export namespace Prisma {
     OR?: CalendarWhereInput[]
     NOT?: CalendarWhereInput | CalendarWhereInput[]
     id?: StringFilter<"Calendar"> | string
+    GoogleChannelId?: StringNullableFilter<"Calendar"> | string | null
     token?: StringFilter<"Calendar"> | string
     userId?: StringFilter<"Calendar"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3190,6 +3213,7 @@ export namespace Prisma {
 
   export type CalendarOrderByWithRelationInput = {
     id?: SortOrder
+    GoogleChannelId?: SortOrderInput | SortOrder
     token?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -3200,6 +3224,7 @@ export namespace Prisma {
     AND?: CalendarWhereInput | CalendarWhereInput[]
     OR?: CalendarWhereInput[]
     NOT?: CalendarWhereInput | CalendarWhereInput[]
+    GoogleChannelId?: StringNullableFilter<"Calendar"> | string | null
     token?: StringFilter<"Calendar"> | string
     userId?: StringFilter<"Calendar"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3207,6 +3232,7 @@ export namespace Prisma {
 
   export type CalendarOrderByWithAggregationInput = {
     id?: SortOrder
+    GoogleChannelId?: SortOrderInput | SortOrder
     token?: SortOrder
     userId?: SortOrder
     _count?: CalendarCountOrderByAggregateInput
@@ -3219,6 +3245,7 @@ export namespace Prisma {
     OR?: CalendarScalarWhereWithAggregatesInput[]
     NOT?: CalendarScalarWhereWithAggregatesInput | CalendarScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Calendar"> | string
+    GoogleChannelId?: StringNullableWithAggregatesFilter<"Calendar"> | string | null
     token?: StringWithAggregatesFilter<"Calendar"> | string
     userId?: StringWithAggregatesFilter<"Calendar"> | string
   }
@@ -3280,41 +3307,48 @@ export namespace Prisma {
 
   export type CalendarCreateInput = {
     id?: string
+    GoogleChannelId?: string | null
     token: string
     user: UserCreateNestedOneWithoutCalendarsInput
   }
 
   export type CalendarUncheckedCreateInput = {
     id?: string
+    GoogleChannelId?: string | null
     token: string
     userId: string
   }
 
   export type CalendarUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    GoogleChannelId?: NullableStringFieldUpdateOperationsInput | string | null
     token?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutCalendarsNestedInput
   }
 
   export type CalendarUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    GoogleChannelId?: NullableStringFieldUpdateOperationsInput | string | null
     token?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CalendarCreateManyInput = {
     id?: string
+    GoogleChannelId?: string | null
     token: string
     userId: string
   }
 
   export type CalendarUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    GoogleChannelId?: NullableStringFieldUpdateOperationsInput | string | null
     token?: StringFieldUpdateOperationsInput | string
   }
 
   export type CalendarUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    GoogleChannelId?: NullableStringFieldUpdateOperationsInput | string | null
     token?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -3394,25 +3428,48 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type CalendarCountOrderByAggregateInput = {
     id?: SortOrder
+    GoogleChannelId?: SortOrder
     token?: SortOrder
     userId?: SortOrder
   }
 
   export type CalendarMaxOrderByAggregateInput = {
     id?: SortOrder
+    GoogleChannelId?: SortOrder
     token?: SortOrder
     userId?: SortOrder
   }
 
   export type CalendarMinOrderByAggregateInput = {
     id?: SortOrder
+    GoogleChannelId?: SortOrder
     token?: SortOrder
     userId?: SortOrder
   }
@@ -3433,6 +3490,24 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type CalendarListRelationFilter = {
@@ -3477,6 +3552,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type UserUpdateOneRequiredWithoutCalendarsNestedInput = {
@@ -3543,6 +3622,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -3569,6 +3662,34 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type UserCreateWithoutCalendarsInput = {
@@ -3621,11 +3742,13 @@ export namespace Prisma {
 
   export type CalendarCreateWithoutUserInput = {
     id?: string
+    GoogleChannelId?: string | null
     token: string
   }
 
   export type CalendarUncheckedCreateWithoutUserInput = {
     id?: string
+    GoogleChannelId?: string | null
     token: string
   }
 
@@ -3660,27 +3783,32 @@ export namespace Prisma {
     OR?: CalendarScalarWhereInput[]
     NOT?: CalendarScalarWhereInput | CalendarScalarWhereInput[]
     id?: StringFilter<"Calendar"> | string
+    GoogleChannelId?: StringNullableFilter<"Calendar"> | string | null
     token?: StringFilter<"Calendar"> | string
     userId?: StringFilter<"Calendar"> | string
   }
 
   export type CalendarCreateManyUserInput = {
     id?: string
+    GoogleChannelId?: string | null
     token: string
   }
 
   export type CalendarUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    GoogleChannelId?: NullableStringFieldUpdateOperationsInput | string | null
     token?: StringFieldUpdateOperationsInput | string
   }
 
   export type CalendarUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    GoogleChannelId?: NullableStringFieldUpdateOperationsInput | string | null
     token?: StringFieldUpdateOperationsInput | string
   }
 
   export type CalendarUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    GoogleChannelId?: NullableStringFieldUpdateOperationsInput | string | null
     token?: StringFieldUpdateOperationsInput | string
   }
 

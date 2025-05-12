@@ -122,6 +122,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.CalendarScalarFieldEnum = {
   id: 'id',
+  GoogleChannelId: 'GoogleChannelId',
   token: 'token',
   userId: 'userId'
 };
@@ -142,6 +143,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 

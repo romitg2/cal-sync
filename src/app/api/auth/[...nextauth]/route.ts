@@ -2,6 +2,8 @@ import { getCalendarEvents } from "../../events/route";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@/generated/prisma";
+import { v4 as uuidv4 } from "uuid";
+import { subscribeCalendar } from "./subscribeCalendar";
 
 declare module "next-auth" {
   interface Session {
@@ -36,11 +38,6 @@ const handler = NextAuth({
 
       console.log("access token", token.accessToken);
 
-      const calendarEvents = await getCalendarEvents(
-        token.accessToken as string
-      );
-      console.log("calendarEvents", calendarEvents);
-
       return token;
     },
     async session({ session, token }) {
@@ -73,12 +70,17 @@ const handler = NextAuth({
           },
         });
 
+        const channelId = uuidv4();
+
         await prisma.calendar.create({
           data: {
             token: account?.access_token as string,
             userId: newUser.id,
+            GoogleChannelId: channelId,
           },
         });
+
+        await subscribeCalendar(channelId, account?.access_token as string);
 
         console.log("newUser created sucessfully", newUser);
       } catch (error) {

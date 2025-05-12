@@ -15,10 +15,13 @@ datasource db {
 }
 
 model Calendar {
-  id         String @id @default(cuid())
-  token      String
-  userId     String
-  user       User   @relation(fields: [userId], references: [id])
+  id              String  @id @default(cuid())
+  GoogleChannelId String?
+  token           String
+  userId          String
+  user            User    @relation(fields: [userId], references: [id])
+
+  @@index([GoogleChannelId])
 }
 
 model User {
