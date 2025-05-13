@@ -1,4 +1,3 @@
-import { getCalendarEvents } from "../../events/route";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@/generated/prisma";

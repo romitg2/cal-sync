@@ -1,6 +1,9 @@
 import { google } from 'googleapis';
 import {getServerSession} from "next-auth";
 import { NextResponse } from 'next/server';
+import { PrismaClient } from "@/generated/prisma";
+
+const prisma = new PrismaClient();
 
 export async function getCalendarEvents(accessToken: string) {
   const auth = new google.auth.OAuth2();
@@ -26,20 +29,35 @@ export async function getCalendarEvents(accessToken: string) {
 
 export async function GET() {
 
-    const session = await getServerSession(); 
+  const session = await getServerSession();
+  const calendarEvents = [];
 
-    console.log("session: ", session);
+  if (session) {
+    const userMail = session?.user.email;
+    const userCalendars = await prisma.user.findUnique({
+      where: {
+        email: userMail,
+      },
+      select: {
+        calendars: true,
+      },
+    });
 
-    const accessToken = session?.user.accessToken;
-    if (!accessToken) {
-        return new Response('Unauthorized', { status: 401 });
+    if (!userCalendars) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
-    
-    try {
-        const events = await getCalendarEvents(accessToken);
-        return NextResponse.json(events);
-    } catch (error) {
-        console.error('Error fetching calendar events:', error);
-        return new Response('Internal Server Error', { status: 500 });
+
+    for (const calendar of userCalendars?.calendars) {
+      const events = await getCalendarEvents(calendar.token);
+      calendarEvents.push(...events);
     }
+
+    calendarEvents.sort((a, b) => {
+      const dateA = new Date(a.start.dateTime || a.start.date);
+      const dateB = new Date(b.start.dateTime || b.start.date);
+      return dateA.getTime() - dateB.getTime();
+    });
+  }
+
+  return NextResponse.json(calendarEvents);
 }
