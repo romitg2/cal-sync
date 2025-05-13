@@ -20,7 +20,7 @@ export type Event = {
 export default function Events() {
 
     const { data: events, isLoading, error } = useCalendarEvents();
-    useAuth();
+    useAuth("/login");
 
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
