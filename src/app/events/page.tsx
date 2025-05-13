@@ -18,15 +18,15 @@ export type Event = {
 
 export default function Events() {
 
-    const { events, loading, error } = useCalendarEvents();
+    const { data: events, isLoading, error } = useCalendarEvents();
 
-    if(loading) return <p>Loading...</p>;
-    if(error) return <p>Error: {error}</p>;
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
     return (
         <div>
             <h1>Events</h1>
-            {events.map((event: Event) => (
+            {events?.map((event: Event) => (
                 <div className="mb-4" key={event.id}>
                     <EventCard event={event} />
                 </div>

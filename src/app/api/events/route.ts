@@ -6,6 +6,9 @@ import { PrismaClient } from "@/generated/prisma";
 const prisma = new PrismaClient();
 
 export async function getCalendarEvents(accessToken: string) {
+
+  console.log("------ access token: ", accessToken);
+
   const auth = new google.auth.OAuth2();
   auth.setCredentials({ access_token: accessToken });
 
