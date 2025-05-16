@@ -4,7 +4,7 @@ import useAuth from "./hooks/useAuth";
 
 export default function Home() {
   useAuth("/login");
-  useAuth("/events", true);
+  useAuth("/dashboard", true);
 
   return (
     <div>

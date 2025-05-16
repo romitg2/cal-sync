@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import useAuth from "../hooks/useAuth";
 
 export default function Login() {
-    useAuth("/events", true);
+    useAuth("/dashboard", true);
 
     return (
         <div className="flex justify-center items-center h-screen">

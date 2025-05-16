@@ -4,11 +4,13 @@ import { PrismaClient } from "@/generated/prisma";
 import { v4 as uuidv4 } from "uuid";
 import { subscribeCalendar } from "./subscribeCalendar";
 
+const prisma = new PrismaClient();
 declare module "next-auth" {
   interface Session {
     user: {
       email: string;
       accessToken?: string;
+      userId?: string;
     };
   }
 }
@@ -41,13 +43,23 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       session.user.accessToken = token.accessToken as string;
+
+      const userId = await prisma.user.findUnique({
+        where: {
+          email: session.user.email,
+        },
+        select: {
+          id: true,
+        },
+      });
+
+      session.user.userId = userId?.id;
+
       return session;
     },
     signIn: async ({ user, account }) => {
       console.log("user", user);
       console.log("account", account);
-
-      const prisma = new PrismaClient();
 
       const existingUser = await prisma.user.findUnique({
         where: {
