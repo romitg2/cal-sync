@@ -29,6 +29,8 @@ export default function Dashboard() {
         redirect(concentScreeUrl + "&state=" + state);
     }
 
+    console.log("--- calendars : ", calendars);
+
 
 return (
     <div>
@@ -38,8 +40,8 @@ return (
         {isLoading ? <p>Loading...</p> : null}
         {error ? <p>Error: {error.message}</p> : null}
         {calendars?.map((calendar: any) => (
-            <div key={calendar.id}>
-                <p>{calendar.name}</p>
+            <div className="border border-gray-300 dark:border-gray-600 p-4 rounded bg-white dark:bg-gray-800 text-black dark:text-white shadow-sm" key={calendar.id}>
+                <p>{calendar.id}</p>
             </div>
         ))}
         <h1>Dashboard</h1>

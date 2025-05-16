@@ -17,7 +17,11 @@ export async function GET() {
             email: userMail,
         },
         select: {
-            calendars: true,
+            calendars: {
+                select: {
+                    id: true,
+                }
+            },
         },
     });
 
