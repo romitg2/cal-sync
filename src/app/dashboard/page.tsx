@@ -11,7 +11,6 @@ export default function Dashboard() {
     const { data: session } = useSession();
     console.log("session", session);
 
-
     const onclick = async () => {
         // trigger oauth flow, and after finishing oauth flow redirect to this page and invalidate query
 

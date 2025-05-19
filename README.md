@@ -34,5 +34,3 @@ npm run dev
 - it will start postgres docker container.
 
 NOTE: you can configure database variables in `scripts/start.sh` (if required).
-
-
